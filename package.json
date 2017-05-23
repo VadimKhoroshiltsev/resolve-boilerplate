@@ -1,0 +1,38 @@
+{
+  "name": "resolve-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VadimKhoroshiltsev/resolve-boilerplate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VadimKhoroshiltsev/resolve-boilerplate/issues"
+  },
+  "homepage": "https://github.com/VadimKhoroshiltsev/resolve-boilerplate#readme",
+  "dependencies": {
+    "babel-plugin-wrap-in-js": "^1.1.1",
+    "classnames": "^2.2.5",
+    "css-loader": "^0.28.2",
+    "next": "^2.4.0",
+    "postcss-cssnext": "^2.11.0",
+    "postcss-loader": "^2.0.5",
+    "raw-loader": "^0.5.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.5",
+    "redux": "^3.6.0",
+    "skeleton-loader": "^1.1.3",
+    "todomvc-app-css": "^2.1.0",
+    "val-loader": "^0.5.1"
+  }
+}
