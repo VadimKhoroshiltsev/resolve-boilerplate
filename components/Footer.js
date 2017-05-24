@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import Link from 'next/link'
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/TodoFilters'
 
 const FILTER_TITLES = {
@@ -21,11 +22,13 @@ function renderTodoCount(activeCount) {
 
 function renderFilterLink({ filter, selectedFilter, onShow }) {
   return (
-    <a className={classnames({ selected: filter === selectedFilter })}
-        style={{ cursor: 'pointer' }}
-        onClick={() => onShow(filter)}>
-      {FILTER_TITLES[filter]}
-    </a>
+    <Link href={`/?filter=${filter}`} as={`/${filter}`}>
+      <a className={classnames({ selected: filter === selectedFilter })}
+          style={{ cursor: 'pointer' }}
+      >
+        {FILTER_TITLES[filter]}
+      </a>
+    </Link>
   )
 }
 
@@ -62,8 +65,7 @@ Footer.propTypes = {
   completedCount: PropTypes.number.isRequired,
   activeCount: PropTypes.number.isRequired,
   filter: PropTypes.string.isRequired,
-  onClearCompleted: PropTypes.func.isRequired,
-  onShow: PropTypes.func.isRequired
+  onClearCompleted: PropTypes.func.isRequired
 }
 
 export default Footer

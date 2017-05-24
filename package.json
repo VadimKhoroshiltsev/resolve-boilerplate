@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "node ./server",
     "build": "next build",
     "start": "next start"
   },
@@ -23,6 +23,7 @@
     "babel-plugin-wrap-in-js": "^1.1.1",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.2",
+    "express": "^4.15.3",
     "next": "^2.4.0",
     "next-redux-wrapper": "^1.1.2",
     "postcss-cssnext": "^2.11.0",

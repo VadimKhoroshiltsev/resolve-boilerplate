@@ -33,7 +33,6 @@ function renderFooter(completedCount, { todos, filter, actions }) {
         activeCount={activeCount}
         filter={filter}
         onClearCompleted={actions.clearCompleted}
-        onShow={actions.changeFilter}
       />
     )
   }
