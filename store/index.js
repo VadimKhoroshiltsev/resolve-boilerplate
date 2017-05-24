@@ -10,8 +10,11 @@ export default (initialState) => {
     const store = createStore(reducer, initialState, applyMiddleware(sagaMiddleware))
     if(typeof window !== 'undefined' && window.document) {
         const socket = io('/');
+        socket.on('connect', (err) => {
+            if(err) return console.log(err);
 
-        sagaMiddleware.run(saga, socket)
+            sagaMiddleware.run(saga, socket)
+        })
     }
 
     return store

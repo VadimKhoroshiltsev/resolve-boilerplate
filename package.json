@@ -38,6 +38,7 @@
     "socket.io": "^2.0.1",
     "socket.io-client": "^2.0.1",
     "todomvc-app-css": "^2.1.0",
+    "uuid": "^3.0.1",
     "val-loader": "^0.5.1"
   }
 }

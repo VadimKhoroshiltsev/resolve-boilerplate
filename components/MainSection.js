@@ -51,7 +51,7 @@ function MainSection(props) {
       {renderToggleAll(completedCount, props)}
       <ul className="todo-list">
         {filteredTodos.map(todo =>
-          <TodoItem key={todo.id} todo={todo} {...actions} />
+          <TodoItem key={todo.aggregateId} todo={todo} {...actions} />
         )}
       </ul>
       {renderFooter(completedCount, props)}

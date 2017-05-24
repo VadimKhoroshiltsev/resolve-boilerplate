@@ -2,6 +2,9 @@ const express = require("express");
 const next = require("next");
 const http = require("http");
 const socketIO = require("socket.io");
+const uuid = require('uuid').v4
+
+const resolve = require('./resolve');
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
@@ -26,6 +29,11 @@ app
 
     io.on("connection", function(socket) {
         console.log('Socket connected');
+
+        socket.on('command', (command) => {
+          command.aggregateId = command.aggregateId || uuid();
+          resolve.execute(command).catch(err => console.log(err))
+        })
     });
 
     server.on("listening", () => {
