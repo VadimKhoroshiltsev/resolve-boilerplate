@@ -1,10 +1,10 @@
-const express = require("express");
-const next = require("next");
-const http = require("http");
-const socketIO = require("socket.io");
-const uuid = require('uuid')
+import express from "express";
+import next from "next";
+import http from "http";
+import socketIO from "socket.io";
+import uuid from "uuid";
 
-const resolve = require('./resolve');
+import resolve from "./resolve";
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
@@ -23,17 +23,15 @@ app
       app.render(req, res, actualPage, queryParams);
     });
 
-    expressApp.get("*", (req, res) => {
-      return handle(req, res);
-    });
+    expressApp.get("*", (req, res) => handle(req, res));
 
-    io.on("connection", function(socket) {
-        console.log('Socket connected');
+    io.on("connection", socket => {
+      console.log("Socket connected");
 
-        socket.on('command', (command) => {
-          command.aggregateId = command.aggregateId || uuid.v4();
-          resolve.execute(command).catch(err => console.log(err))
-        })
+      socket.on("command", command => {
+        command.aggregateId = command.aggregateId || uuid.v4();
+        resolve.execute(command).catch(err => console.log(err));
+      });
     });
 
     server.on("listening", () => {
