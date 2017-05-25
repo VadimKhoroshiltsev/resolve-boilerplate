@@ -2,7 +2,7 @@ const express = require("express");
 const next = require("next");
 const http = require("http");
 const socketIO = require("socket.io");
-const uuid = require('uuid').v4
+const uuid = require('uuid')
 
 const resolve = require('./resolve');
 
@@ -31,7 +31,7 @@ app
         console.log('Socket connected');
 
         socket.on('command', (command) => {
-          command.aggregateId = command.aggregateId || uuid();
+          command.aggregateId = command.aggregateId || uuid.v4();
           resolve.execute(command).catch(err => console.log(err))
         })
     });

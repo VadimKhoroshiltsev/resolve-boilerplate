@@ -8,7 +8,7 @@ const query = require('../packages/resolve-query/dist').default
 const todoAggregate = require('./aggregates');
 
 const eventStore = createStore({
-    driver: esDriver({ pathToFile: './event_store.json' })
+    driver: esDriver({ pathToFile: './db.json' })
 });
 
 const bus = createBus({ driver: busDriver() });

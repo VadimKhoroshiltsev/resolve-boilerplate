@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node ./server",
-    "build": "next build",
-    "start": "next start"
+    "dev": "nodemon --exec \"babel-node ./server\"",
+    "build": "babel ./ -s -D -d dist",
+    "start": "node dist",
+    "prestart": "npm run -s build"
   },
   "repository": {
     "type": "git",
@@ -20,12 +21,15 @@
   },
   "homepage": "https://github.com/VadimKhoroshiltsev/resolve-boilerplate#readme",
   "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
     "babel-plugin-wrap-in-js": "^1.1.1",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.2",
     "express": "^4.15.3",
     "next": "^2.4.0",
     "next-redux-wrapper": "^1.1.2",
+    "nodemon": "^1.11.0",
     "postcss-cssnext": "^2.11.0",
     "postcss-loader": "^2.0.5",
     "raw-loader": "^0.5.1",
