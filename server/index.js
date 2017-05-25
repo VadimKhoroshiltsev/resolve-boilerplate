@@ -6,6 +6,8 @@ import uuid from "uuid";
 
 import resolve from "./resolve";
 
+import projection from '../projections'
+
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -32,6 +34,10 @@ app
           command.aggregateId = command.aggregateId || uuid.v4();
           resolve.execute(command).catch(err => console.log(err));
         });
+
+        const unsubscribe = resolve.subscribe(Object.keys(projection.eventHandlers), event => socket.emit('event', event));
+
+        socket.on('disconnect', () => unsubscribe());
       })
     });
 

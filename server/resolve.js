@@ -6,7 +6,7 @@ import commandHandler from "../packages/resolve-command/dist";
 import query from "../packages/resolve-query/dist";
 
 import todoAggregate from "./aggregates";
-import todosProjection from "./projections";
+import todosProjection from "../projections";
 
 const eventStore = createStore({
   driver: esDriver({ pathToFile: "./db.json" })
@@ -27,7 +27,7 @@ const queries = query({
 });
 
 export default {
-  bus,
+  subscribe: bus.onEvent,
   execute,
   query: queries
 };

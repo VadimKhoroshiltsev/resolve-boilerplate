@@ -18,6 +18,7 @@ function* initCommandSender(socket) {
 function subscribeOnSocket(socket) {
     return eventChannel((emit) => {
         socket.on('initialTodos', state => emit(actions.merge('todos', state)));
+        socket.on('event', event => emit(event));
 
         return () => {};
     });

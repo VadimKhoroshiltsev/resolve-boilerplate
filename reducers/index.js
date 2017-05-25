@@ -1,10 +1,6 @@
-import { combineReducers } from 'redux'
-import { reducer } from '../packages/resolve-redux/dist';
-import todos from './todos'
+import { createReducer } from '../packages/resolve-redux/dist';
+import projection from '../projections'
 
-const rootReducer = combineReducers({
-  reducer,
-  todos
-})
+const { name, eventHandlers } = projection
 
-export default rootReducer
+export default createReducer({ name, eventHandlers })
