@@ -1,19 +1,14 @@
 import { ADD_TODO, DELETE_TODO, EDIT_TODO, COMPLETE_TODO, COMPLETE_ALL, CLEAR_COMPLETED } from '../constants/ActionTypes'
+import uuid from 'uuid'
 
-const initialState = [
-  {
-    text: 'Use Redux',
-    completed: false,
-    aggregateId: 0
-  }
-]
+const initialState = []
 
 export default function todos(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO:
       return [
         {
-          aggregateId: state.reduce((maxAggregateId, todo) => Math.max(todo.aggregateId, maxAggregateId), -1) + 1,
+          aggregateId: uuid.v4(),
           completed: false,
           text: action.text
         },
@@ -48,6 +43,9 @@ export default function todos(state = initialState, action) {
 
     case CLEAR_COMPLETED:
       return state.filter(todo => todo.completed === false)
+
+    case '@@resolve/PROJECTION_STATE_MERGE':
+      return action.state;
 
     default:
       return state
