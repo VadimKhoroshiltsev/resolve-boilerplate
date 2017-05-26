@@ -24,23 +24,26 @@ app
     express.get("/:filter?", (req, res) => {
       const actualPage = "/";
       const queryParams = { filter: req.params.filter };
-      app.render(req, res, actualPage, queryParams);
+
+      resolve.query('todos').then(state => {
+          req.initialState = state;
+          app.render(req, res, actualPage, queryParams);
+      });
     });
 
     express.get("*", (req, res) => handle(req, res));
 
     io.on("connection", socket => {
       console.log("Socket connected");
-      resolve.query('todos').then(state => socket.emit('initialTodos', state)).then(() => {
         socket.on("command", command => {
-          command.aggregateId = command.aggregateId || uuid.v4();
-          resolve.execute(command).catch(err => console.log(err));
+            command.aggregateId = command.aggregateId || uuid.v4();
+            resolve.execute(command).catch(err => console.log(err));
         });
 
         const unsubscribe = resolve.subscribe(Object.keys(projection.eventHandlers), event => socket.emit('event', event));
 
         socket.on('disconnect', () => unsubscribe());
-      })
+
     });
 
     server.on("listening", () => {

@@ -1,4 +1,3 @@
-import withRedux from 'next-redux-wrapper'
 import Head from 'next/head'
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -9,9 +8,11 @@ import Header from '../components/Header'
 import MainSection from '../components/MainSection'
 import * as TodoActions from '../redux/actions'
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/TodoFilters'
+import withResolveRedux from '../resolve/with-resolve'
 
-const App = ({todos, filter, actions}) => (
-  <div className="todoapp">
+const App = (props) => {
+  const {todos, filter, actions} = props;
+  return (<div className="todoapp">
     <Head>
       <link rel="icon" type="image/ico" href="favicon.ico" />
       <link rel="stylesheet" href="index.css" />
@@ -19,28 +20,31 @@ const App = ({todos, filter, actions}) => (
     <Header addTodo={actions.addTodo} />
     <MainSection todos={todos} actions={actions} filter={filter}/>
   </div>
-)
+)}
 
-App.getInitialProps = context => context.query
+App.getInitialProps = context => {
+  const initialState = context.req ? context.req.initialState : undefined;
+  return {
+      initialState
+    }
+}
 
 App.propTypes = {
   todos: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state, ownProps) => {
+  return ({
   todos: state.todos,
   filter: [SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE].indexOf(ownProps.filter) >= 0
     ? ownProps.filter
     : SHOW_ALL
-})
+  })
+}
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(TodoActions, dispatch)
 })
 
-export default withRedux(
-    makeStore,
-    mapStateToProps,
-    mapDispatchToProps
-)(App)
+export default withResolveRedux(makeStore, mapStateToProps, mapDispatchToProps)(App)
