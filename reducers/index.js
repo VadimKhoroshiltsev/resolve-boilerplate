@@ -1,4 +1,4 @@
-import { createReducer } from '../packages/resolve-redux/dist';
+import { createReducer } from 'resolve-redux';
 import projection from '../projections'
 
 const { name, eventHandlers } = projection

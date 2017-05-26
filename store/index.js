@@ -8,7 +8,7 @@ import saga from '../sagas'
 
 export default (initialState) => {
     const sagaMiddleware = createSagaMiddleware()
-    const store = createStore(reducer, projection.initialState(), applyMiddleware(sagaMiddleware))
+    const store = createStore(reducer, projection.initialState, applyMiddleware(sagaMiddleware))
     if(typeof window !== 'undefined' && window.document) {
         const socket = io('/');
         socket.on('connect', (err) => {

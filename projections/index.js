@@ -2,7 +2,7 @@ import Immutable from 'seamless-immutable'
 
 export default {
     name: 'todos',
-    initialState: () => Immutable({ todos: [] }),
+    initialState: Immutable({ todos: [] }),
 
     eventHandlers: {
         TodoAdded: (state, event) => (state.setIn(['todos'], [{

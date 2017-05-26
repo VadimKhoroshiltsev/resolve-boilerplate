@@ -1,9 +1,9 @@
-import createStore from "../packages/resolve-es/dist";
-import esDriver from "../packages/resolve-es-file/dist";
-import createBus from "../packages/resolve-bus/dist";
-import busDriver from "../packages/resolve-bus-memory/dist";
-import commandHandler from "../packages/resolve-command/dist";
-import query from "../packages/resolve-query/dist";
+import createStore from "resolve-es";
+import esDriver from "resolve-es-file";
+import createBus from "resolve-bus";
+import busDriver from "resolve-bus-memory";
+import commandHandler from "resolve-command";
+import query from "resolve-query";
 
 import todoAggregate from "./aggregates";
 import todosProjection from "../projections";
