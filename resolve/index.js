@@ -6,7 +6,7 @@ import commandHandler from "resolve-command";
 import query from "resolve-query";
 
 import todoAggregate from "./aggregates";
-import todosProjection from "../projections";
+import todosProjection from "./projections";
 
 const eventStore = createStore({
   driver: esDriver({ pathToFile: "./db.json" })

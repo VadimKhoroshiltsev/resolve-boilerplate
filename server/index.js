@@ -4,9 +4,9 @@ import http from "http";
 import socketIO from "socket.io";
 import uuid from "uuid";
 
-import resolve from "./resolve";
+import resolve from "../resolve";
 
-import projection from '../projections'
+import projection from '../resolve/projections'
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
