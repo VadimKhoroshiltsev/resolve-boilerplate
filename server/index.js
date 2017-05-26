@@ -19,6 +19,8 @@ app
     const server = http.Server(express);
     const io = socketIO(server);
 
+    express.use(createExpress.static('static'))
+
     express.get("/:filter?", (req, res) => {
       const actualPage = "/";
       const queryParams = { filter: req.params.filter };

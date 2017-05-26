@@ -1,6 +1,5 @@
 import withRedux from 'next-redux-wrapper'
 import Head from 'next/head'
-import {stylesheet} from 'todomvc-app-css/index.css'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
@@ -13,7 +12,10 @@ import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/TodoFilters'
 
 const App = ({todos, filter, actions}) => (
   <div className="todoapp">
-    <Head><style dangerouslySetInnerHTML={{__html: stylesheet}} /></Head>
+    <Head>
+      <link rel="icon" type="image/ico" href="favicon.ico" />
+      <link rel="stylesheet" href="index.css" />
+    </Head>
     <Header addTodo={actions.addTodo} />
     <MainSection todos={todos} actions={actions} filter={filter}/>
   </div>

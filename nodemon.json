@@ -1,3 +1,0 @@
-{
-  "ignore": [".next/*", "dist/*", "pages/*", "db.json", "components"]
-}

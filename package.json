@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec \"babel-node ./server\"",
+    "dev": "nodemon -w server -w resolve --exec \"babel-node ./server\"",
     "build": "babel ./ -s -D -d dist --ignore node_modules,.babelrc,.gitignore,LICENSE,nodemon.json",
     "start": "node dist/server",
     "prestart": "npm run -s build"
@@ -41,21 +41,13 @@
     "seamless-immutable": "^7.1.2",
     "socket.io": "^2.0.1",
     "socket.io-client": "^2.0.1",
-    "todomvc-app-css": "^2.1.0",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
-    "babel-plugin-wrap-in-js": "^1.1.1",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "nodemon": "^1.11.0",
-    "postcss-cssnext": "^2.11.0",
-    "postcss-loader": "^2.0.5",
-    "raw-loader": "^0.5.1",
-    "skeleton-loader": "^1.1.3",
-    "val-loader": "^0.5.1"
+    "nodemon": "^1.11.0"
   }
 }
