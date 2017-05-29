@@ -13,7 +13,7 @@ export default {
         TodoDeleted: (state, event) => state.setIn(['todos'], state.todos.filter(item => item.aggregateId !== event.aggregateId)),
         TodoEdited: (state, event) => state.setIn(['todos'], state.todos.map(todo =>
             todo.aggregateId === event.aggregateId
-                ? { ...todo, text: event.text }
+                ? { ...todo, text: event.payload.text }
                 : todo
         )),
         TodoCompleted: (state, event) => state.setIn(['todos'], state.todos.map(todo =>
