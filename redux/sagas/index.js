@@ -1,6 +1,5 @@
 import { eventChannel } from 'redux-saga';
 import { fork, all, takeEvery, call, put } from 'redux-saga/effects';
-import { actions } from "resolve-redux";
 import { ADD_TODO, DELETE_TODO, EDIT_TODO, COMPLETE_TODO } from '../ActionTypes'
 
 const commandTypes = [ADD_TODO, DELETE_TODO, EDIT_TODO, COMPLETE_TODO];

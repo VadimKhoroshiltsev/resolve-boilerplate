@@ -2,7 +2,6 @@ import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import io from 'socket.io-client'
 import Immutable from 'seamless-immutable'
-import projection from '../../resolve/projections'
 import reducer from '../reducers'
 import saga from '../sagas'
 
