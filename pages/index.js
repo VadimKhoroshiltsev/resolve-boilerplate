@@ -34,14 +34,12 @@ App.propTypes = {
   actions: PropTypes.object.isRequired
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return ({
+const mapStateToProps = (state, ownProps) => ({
   todos: state.todos,
-  filter: [SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE].indexOf(ownProps.filter) >= 0
-    ? ownProps.filter
+  filter: [SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE].indexOf(ownProps.url.query.filter) >= 0
+    ? ownProps.url.query.filter
     : SHOW_ALL
   })
-}
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(TodoActions, dispatch)
