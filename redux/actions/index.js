@@ -19,5 +19,6 @@ export const completeTodo = aggregateId => ({
   type: types.COMPLETE_TODO,
   aggregateId
 });
+
 export const completeAll = () => ({ type: types.COMPLETE_ALL });
 export const clearCompleted = () => ({ type: types.CLEAR_COMPLETED });
