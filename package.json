@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon -w server -w resolve --exec \"babel-node ./server\"",
-    "build": "babel ./ -s -D -d dist --ignore node_modules,.babelrc,.gitignore,LICENSE,nodemon.json",
-    "start": "node dist/server",
+    "build:client": "next build",
+    "build:server": "webpack --config webpack.server.config.js",
+    "build:static": "cp -r ./static ./.next/dist/static",
+    "build": "npm run build:client && npm run build:static && npm run build:server",
+    "start": "node .next/dist/server/server.js",
     "prestart": "npm run -s build",
     "lint": "eslint ./",
-    "lint:fix": "eslint ./ --fix"
+    "lint:fix": "eslint ./ --fix",
   },
   "repository": {
     "type": "git",
@@ -57,6 +60,8 @@
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "5.0.3",
     "eslint-plugin-react": "7.0.1",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "webpack": "^2.6.1",
+    "webpack-node-externals": "^1.6.0"
   }
 }
