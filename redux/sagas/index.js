@@ -1,5 +1,5 @@
-import { eventChannel } from 'redux-saga';
-import { fork, all, takeEvery, call, put, select } from 'redux-saga/effects';
+import { fork, all, takeEvery, put, select } from 'redux-saga/effects';
+import initEventGetter from './event-getter';
 import { deleteTodo, completeTodo } from '../actions';
 import {
   ADD_TODO,
@@ -48,21 +48,6 @@ function* initCommandSender(socket) {
         takeEvery(CLEAR_COMPLETED, handleClearCompleted)
       ])
   );
-}
-
-function subscribeOnSocket(socket) {
-  return eventChannel(emit => {
-    socket.on('event', event => emit(event));
-    return () => {};
-  });
-}
-
-function* initEventGetter(socket) {
-  const channel = yield call(subscribeOnSocket, socket);
-
-  yield takeEvery(channel, function*(action) {
-    yield put(action);
-  });
 }
 
 export default function*(socket) {

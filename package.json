@@ -12,7 +12,7 @@
     "start": "node .next/dist/server/server.js",
     "prestart": "npm run -s build",
     "lint": "eslint ./",
-    "lint:fix": "eslint ./ --fix",
+    "lint:fix": "eslint ./ --fix"
   },
   "repository": {
     "type": "git",

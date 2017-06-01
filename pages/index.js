@@ -11,7 +11,7 @@ import {
   SHOW_COMPLETED,
   SHOW_ACTIVE
 } from '../constants/TodoFilters';
-import withResolveRedux from '../resolve/with-resolve';
+import nextRedux from './next-redux';
 
 const App = props => {
   const { todos, filter, actions } = props;
@@ -52,6 +52,6 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(TodoActions, dispatch)
 });
 
-export default withResolveRedux(makeStore, mapStateToProps, mapDispatchToProps)(
+export default nextRedux(makeStore, mapStateToProps, mapDispatchToProps)(
   App
 );
